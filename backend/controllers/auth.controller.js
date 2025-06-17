@@ -162,7 +162,7 @@ export const forgotPassword = async (req, res) => {
         await user.save();
 
         // Here you would send the reset token to the user's email
-        await sendResetPasswordEmail(user.email, `http://localhost:5000/reset-password/${resetToken}`);
+        await sendResetPasswordEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
 
         res.status(200).json({
             success: true,
